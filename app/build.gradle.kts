@@ -103,6 +103,9 @@ dependencies {
     // Lottie
     implementation("com.airbnb.android:lottie:6.2.0")
 
+    // charts
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
 }
 
 
