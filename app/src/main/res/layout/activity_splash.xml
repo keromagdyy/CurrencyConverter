@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/im_bm_logo"
         app:lottie_autoPlay="true"
         app:lottie_fileName="lottie_splash_logo.json"
-        app:lottie_loop="true"
-        app:lottie_speed="1.0" />
+        app:lottie_loop="false"
+        app:lottie_speed="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

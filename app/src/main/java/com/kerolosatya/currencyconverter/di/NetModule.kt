@@ -38,13 +38,13 @@ class NetModule {
         .addInterceptor { chain ->
             val newUrl = chain.request().url
                 .newBuilder()
+                .addQueryParameter("access_key", ConstantLinks.API_KEY)
                 .build()
 
             val newRequest = chain.request()
                 .newBuilder()
                 .url(newUrl)
                 .addHeader("Accept", "application/json")
-                .addHeader("access_key", ConstantLinks.API_KEY)
                 .build()
             chain.proceed(newRequest)
         }

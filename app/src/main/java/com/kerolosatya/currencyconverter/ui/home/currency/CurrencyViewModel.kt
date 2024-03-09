@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kerolosatya.currencyconverter.data.model.CurrencyModel
+import com.kerolosatya.currencyconverter.data.util.Common
 import com.kerolosatya.currencyconverter.domain.useCase.CurrencyUseCase
 import com.kerolosatya.currencyconverter.ui.base.BaseApiStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -39,11 +40,11 @@ class CurrencyViewModel @Inject constructor(
                 _statusCurrency.postValue(BaseApiStatus.DONE)
 
                 _currency.postValue(currencyUseCase.execute())
-                Log.d("getCurrencyException", "getCurrencies: ${currency}")
+                Log.d(Common.KeroDebug, "getCurrencies: ${currency}")
 
             } catch (e: Exception) {
                 _statusCurrency.postValue(BaseApiStatus.ERROR)
-                Log.d("getCurrencyException", "getCurrencies: ${e.message}")
+                Log.d(Common.KeroDebug, "getCurrencies: ${e.message}")
             }
 
         }

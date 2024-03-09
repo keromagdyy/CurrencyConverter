@@ -7,7 +7,7 @@ class CurrencyRepositoryImpl(
     private val currencyRemoteDataSource: CurrencyRemoteDataSource,
 ) : CurrencyRepository {
 
-    override suspend fun getCompetition(): CurrencyModel {
+    override suspend fun getCurrency(): CurrencyModel {
         val currencyModel = CurrencyModel()
 
         if (currencyRemoteDataSource.getCurrency().isSuccessful) {

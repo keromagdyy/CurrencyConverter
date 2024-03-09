@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kerolosatya.currencyconverter.data.model.CurrencyModel
+import com.kerolosatya.currencyconverter.data.util.Common
 import com.kerolosatya.currencyconverter.domain.useCase.HistoricalUseCase
 import com.kerolosatya.currencyconverter.ui.base.BaseApiStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,11 +41,11 @@ class HistoricalViewModel @Inject constructor(
                 _statusHistorical.postValue(BaseApiStatus.DONE)
 
                 _historical.postValue(historicalUseCase.execute(date, base, symbols))
-                Log.d("getHistoricalException", "getHistorical: ${historical}")
+                Log.d(Common.KeroDebug, "getHistorical: ${historical}")
 
             } catch (e: Exception) {
                 _statusHistorical.postValue(BaseApiStatus.ERROR)
-                Log.d("getHistoricalException", "getHistorical: ${e.message}")
+                Log.d(Common.KeroDebug, "getHistorical: ${e.message}")
             }
 
         }
