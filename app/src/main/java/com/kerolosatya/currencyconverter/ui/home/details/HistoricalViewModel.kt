@@ -1,4 +1,4 @@
-package com.kerolosatya.currencyconverter.ui.home.historical
+package com.kerolosatya.currencyconverter.ui.home.details
 
 import android.app.Application
 import android.util.Log

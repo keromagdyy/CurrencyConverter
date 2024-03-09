@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_converter" />
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.kerolosatya.currencyconverter.ui.home.historical.DetailsFragment"
+        android:name="com.kerolosatya.currencyconverter.ui.home.details.DetailsFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details" />
 </navigation>

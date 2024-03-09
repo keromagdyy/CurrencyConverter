@@ -6,4 +6,5 @@ data class CurrencyModel(
     val base: String? = null,
     val date: String? = null,
     val rates: RatesModel? = null,
+    val error: ErrorModel? = null,
 )

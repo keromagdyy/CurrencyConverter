@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import com.kerolosatya.currencyconverter.R
+import com.kerolosatya.currencyconverter.data.model.RatesModel
+import kotlin.reflect.full.declaredMemberProperties
 
 open class BaseFragment : Fragment() {
     var dp = 0f
@@ -103,15 +105,6 @@ open class BaseFragment : Fragment() {
         }
     }
 
-
-    fun validateIncreaseQuantity(qty: Int, max: Int): Boolean {
-        return (qty < max)
-    }
-
-    fun validateDecreaseQuantity(qty: Int): Boolean {
-        return (qty > 0)
-    }
-
     fun showProgressDialog(view: View) {
         view.visibility = View.VISIBLE
         requireActivity().window.setFlags(
@@ -123,6 +116,14 @@ open class BaseFragment : Fragment() {
     fun hideProgressDialog(view: View) {
         view.visibility = View.GONE
         requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    fun RatesModel.toMap(): Map<String, Float> {
+        return this::class.declaredMemberProperties
+            .associateBy { it.name }
+            .mapValues { prop ->
+                prop.value.call(this) as Float
+            }
     }
 
 }

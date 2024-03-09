@@ -30,7 +30,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideCompetitionDetailsRepository(
+    fun provideHistoricalRepository(
         historicalRemoteDataSource: HistoricalRemoteDataSource,
     ): HistoricalRepository {
 

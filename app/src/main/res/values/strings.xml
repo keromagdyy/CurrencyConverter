@@ -4,5 +4,6 @@
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="details">Details</string>
+    <string name="must_10_popular_currencies_today">Must 10 popular currencies today:</string>
 
 </resources>

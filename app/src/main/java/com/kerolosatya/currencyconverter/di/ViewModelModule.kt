@@ -4,7 +4,7 @@ import android.app.Application
 import com.kerolosatya.currencyconverter.domain.useCase.CurrencyUseCase
 import com.kerolosatya.currencyconverter.ui.home.currency.CurrencyViewModel
 import com.kerolosatya.currencyconverter.domain.useCase.HistoricalUseCase
-import com.kerolosatya.currencyconverter.ui.home.historical.HistoricalViewModel
+import com.kerolosatya.currencyconverter.ui.home.details.HistoricalViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,8 +20,8 @@ class ViewModelModule {
     }
 
     @Provides
-    fun provideCompetitionDetailsViewModel(app: Application, competitionDetailsUseCase: HistoricalUseCase): HistoricalViewModel {
-        return HistoricalViewModel(app,competitionDetailsUseCase)
+    fun provideHistoricalViewModel(app: Application, historicalUseCase: HistoricalUseCase): HistoricalViewModel {
+        return HistoricalViewModel(app,historicalUseCase)
     }
 
 }

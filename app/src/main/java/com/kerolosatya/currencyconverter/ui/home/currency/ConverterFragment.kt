@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.core.widget.addTextChangedListener
 import com.kerolosatya.currencyconverter.R
 import com.kerolosatya.currencyconverter.data.model.RatesModel
 import com.kerolosatya.currencyconverter.data.util.Common
@@ -16,7 +15,6 @@ import com.kerolosatya.currencyconverter.databinding.FragmentConverterBinding
 import com.kerolosatya.currencyconverter.ui.base.BaseApiStatus
 import com.kerolosatya.currencyconverter.ui.base.BaseFragment
 import com.kerolosatya.currencyconverter.ui.home.HomeActivity
-import kotlin.reflect.full.declaredMemberProperties
 
 class ConverterFragment : BaseFragment() {
     private lateinit var binding: FragmentConverterBinding
@@ -41,12 +39,21 @@ class ConverterFragment : BaseFragment() {
 
         currencyViewModel = (activity as HomeActivity).currencyViewModel
         showProgressDialog(binding.progressLoading)
-        observeCompetitions()
+        observeConverter()
     }
 
     private fun onClick() {
         binding.btnDetails.setOnClickListener {
-            navigateTo(R.id.detailsFragment, null)
+            val base = binding.txtListFrom.text.toString()
+            val target = binding.txtListTo.text.toString()
+            if (base.isNotEmpty() && target.isNotEmpty()) {
+                val bundle = Bundle()
+                bundle.putString("base", base)
+                bundle.putString("target", target)
+                navigateTo(R.id.detailsFragment, bundle)
+            } else {
+                showToastSnack("you should choose currency first", true)
+            }
         }
         binding.txtListFrom.setOnItemClickListener { _, _, position, _ ->
 
@@ -115,7 +122,7 @@ class ConverterFragment : BaseFragment() {
         })
     }
 
-    private fun observeCompetitions() {
+    private fun observeConverter() {
         currencyViewModel.currency.observe(viewLifecycleOwner) {
             when (currencyViewModel.statusCurrency.value) {
                 BaseApiStatus.LOADING -> {
@@ -182,14 +189,6 @@ class ConverterFragment : BaseFragment() {
     fun convertBetweenCurrencies(amount: Float, sourceRate: Float, targetRate: Float): Float {
         val amountInEUR = amount / sourceRate
         return amountInEUR * targetRate
-    }
-
-    private fun RatesModel.toMap(): Map<String, Float> {
-        return this::class.declaredMemberProperties
-            .associateBy { it.name }
-            .mapValues { prop ->
-                prop.value.call(this) as Float
-            }
     }
 
 }

@@ -12,7 +12,7 @@ class HistoricalRepositoryImpl(
         base: String,
         symbols: String,
     ): CurrencyModel {
-        val competitionDetailModel = CurrencyModel()
+        val historicalDetailModel = CurrencyModel()
         if (historicalRemoteDataSource.getHistorical(date, base, symbols).isSuccessful
         ) {
             val body = historicalRemoteDataSource.getHistorical(date, base, symbols).body()
@@ -20,6 +20,6 @@ class HistoricalRepositoryImpl(
                 return body
             }
         }
-        return competitionDetailModel
+        return historicalDetailModel
     }
 }

@@ -8,19 +8,23 @@ import com.kerolosatya.currencyconverter.databinding.LayoutPopularCurrenciesBind
 
 class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.ViewHolder>() {
 
-    private var competitionsList = ArrayList<CurrencyModel>()
+    private lateinit var ratesMap: Map<String, Float>
+    private lateinit var base: String
 
-    fun setData(list: List<CurrencyModel>) {
-        competitionsList = list as ArrayList
+    fun setData(base: String, ratesMap: Map<String, Float>) {
+        this.ratesMap = ratesMap
+        this.base = base
         notifyDataSetChanged()
     }
 
     inner class ViewHolder(private val binding: LayoutPopularCurrenciesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: CurrencyModel, position: Int) {
+        fun bind(item: Pair<String, Float>, position: Int) {
 
-            binding.base = item.base
+            binding.base = base
+            binding.currencyName = item.first
+            binding.price = item.second.toString()
 
         }
     }
@@ -35,10 +39,10 @@ class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        competitionsList?.get(position)?.let { holder.bind(it, position) }
+        ratesMap.toList()?.get(position)?.let { holder.bind(it, position) }
     }
 
     override fun getItemCount(): Int {
-        return competitionsList.size
+        return ratesMap.keys.toList().size
     }
 }

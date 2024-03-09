@@ -3,7 +3,7 @@ package com.kerolosatya.currencyconverter.ui.home
 import android.os.Bundle
 import com.kerolosatya.currencyconverter.databinding.ActivityHomeBinding
 import com.kerolosatya.currencyconverter.ui.base.BaseActivity
-import com.kerolosatya.currencyconverter.ui.home.historical.HistoricalViewModel
+import com.kerolosatya.currencyconverter.ui.home.details.HistoricalViewModel
 import com.kerolosatya.currencyconverter.ui.home.currency.CurrencyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
