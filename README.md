@@ -16,7 +16,6 @@ BM for Banque Misr, and it's a sample project using the fixer.io APIs to Convert
   - Coroutines
   - Retrofit, Okhttp and Interceptors
   - Dagger Hilt Dependency Injection
-  - Coil and Glide for Images present and processing
   - Data and view binding
   - Livedata and Viewmodels
   - Lottie library
